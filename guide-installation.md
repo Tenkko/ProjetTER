@@ -106,6 +106,26 @@ scrape_configs:
 ```
 Activez Prometheus en tant que service :
 ```bash
+
+cd etc/systemd/sytem
+
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/home/remotelabz/prometheus-2.47.2.linux-amd64/prometheus \
+  --config.file=/home/remotelabz/prometheus-2.47.2.linux-amd64/prometheus.yml \
+  --web.listen-address=:9090
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+```
+```bash
 sudo systemctl daemon-reload
 sudo systemctl enable prometheus
 sudo systemctl start prometheus
