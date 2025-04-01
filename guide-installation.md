@@ -108,6 +108,7 @@ Activez Prometheus en tant que service :
 ```bash
 
 cd etc/systemd/sytem
+sudo nano prometheus.service
 
 [Unit]
 Description=Prometheus
